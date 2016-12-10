@@ -1,13 +1,16 @@
 import React from 'react';
+import { connect } from 'dva/mobile';
 import { Scene, Router } from 'react-native-router-flux';
-import firebase from 'firebase';
 
 import LoginForm from './routes/LoginForm';
 import Hello from './routes/HelloComponent';
 import AsyncHello from './routes/AsyncHelloHelloComponent';
 
+const RouterComponent = ({ dispatch }) => {
+  function onLogout() {
+    dispatch({ type: 'Auth/logoutUser' });
+  }
 
-const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 65 }}>
       <Scene key="auth">
@@ -16,7 +19,7 @@ const RouterComponent = () => {
 
       <Scene key="main">
         <Scene
-          onRight={() => firebase.auth().signOut()}
+          onRight={onLogout}
           rightTitle="Logout"
           key="hello"
           component={Hello}
@@ -33,4 +36,4 @@ const RouterComponent = () => {
   );
 };
 
-export default RouterComponent;
+export default connect()(RouterComponent);

@@ -9,3 +9,7 @@ export function signInWithEmailAndPassword(email, password) {
         .catch((err) => ({ err }));
     });
 }
+
+export function signOut() {
+  return firebase.auth().signOut();
+}

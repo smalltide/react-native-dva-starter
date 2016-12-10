@@ -7,9 +7,9 @@ export function create(nodePath, object) {
     .catch((err) => ({ err }));
 }
 
-export function fetch(nodePath) {
+export function fetch(nodePath, eventType = 'value') {
   return firebase.database().ref(nodePath)
-    .once('value')
+    .once(eventType)
     .then((snapshot) => ({ data: snapshot.val() }))
     .catch((err) => ({ err }));
 }
@@ -35,16 +35,18 @@ export function remove(nodePath) {
     .catch((err) => ({ err }));
 }
 
-export function watchNode(nodePath, callback) {
+// eventType: "value", "child_added", "child_changed", "child_removed", or "child_moved."
+// return unWatchNode function
+export function watchNode(nodePath, callback, eventType = 'value') {
   const ref = firebase.database().ref(nodePath);
 
   const handler = (snapshot) => {
     callback(snapshot.val());
   };
 
-  ref.on('value', handler);
+  ref.on(eventType, handler);
 
   return () => {
-    ref.off('value', handler);
+    ref.off(eventType, handler);
   };
 }

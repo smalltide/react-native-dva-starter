@@ -22,7 +22,6 @@ export default {
       Actions.asyncHello();
 
       const message = yield call(sayHelloAsync, payload);
-      console.log(message);
       yield put({ type: 'asyncHelloSuccess', payload: message });
     }
   },

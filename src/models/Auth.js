@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import { signInWithEmailAndPassword } from '../services/Auth';
+import { signInWithEmailAndPassword, signOut } from '../services/Auth';
 
 const INITIAL_STATE = {
   email: '',
@@ -42,6 +42,9 @@ export default {
       } else if (err) {
         yield put({ type: 'loginFail' });
       }
+    },
+    * logoutUser({ payload }, { call }) {
+      yield call(signOut);
     }
   },
   subscriptions: {
