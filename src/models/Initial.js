@@ -13,11 +13,11 @@ export default {
   subscriptions: {
     initializeFirebase() {
       const config = {
-        apiKey: 'AIzaSyASDo8VyrO5wCB0_LseaIxeRK931jf-lMQ',
-        authDomain: 'react-native-manager-4c69f.firebaseapp.com',
-        databaseURL: 'https://react-native-manager-4c69f.firebaseio.com',
-        storageBucket: 'react-native-manager-4c69f.appspot.com',
-        messagingSenderId: '881318924131'
+        apiKey: 'AIzaSyAEelH-I86F41p0bGwwh_N8taUgEUe6CLY',
+        authDomain: 'react-native-dva-starter.firebaseapp.com',
+        databaseURL: 'https://react-native-dva-starter.firebaseio.com',
+        storageBucket: 'react-native-dva-starter.appspot.com',
+        messagingSenderId: '617618397661'
       };
       firebase.initializeApp(config);
     },
@@ -28,7 +28,7 @@ export default {
           .onAuthStateChanged((user) => {
             checkUser(user);
           });
-      }, 500);
+      }, 1500);
     }
   }
 };
