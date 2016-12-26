@@ -19,7 +19,10 @@ export default {
         storageBucket: 'react-native-dva-starter.appspot.com',
         messagingSenderId: '617618397661'
       };
-      firebase.initializeApp(config);
+
+      if (firebase.apps.length === 0) {
+        firebase.initializeApp(config);
+      }
     },
     monitorAuth() {
       _.delay(() => {
