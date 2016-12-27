@@ -5,7 +5,9 @@ export function signInWithEmailAndPassword(email, password) {
     .then((user) => ({ user }))
     .catch(() => {
       return firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((user) => ({ user }))
+        .then((user) => {
+          return { user, isCreate: true };
+        })
         .catch((err) => ({ err }));
     });
 }
