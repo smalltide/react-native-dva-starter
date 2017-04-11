@@ -18,3 +18,9 @@ eslint and editorconfig ready
   > react-native run-ios
   > react-native run-android
 ```
+
+android release build
+```
+  > cd android && ./gradlew assembleRelease
+  > cd android && ./gradlew installRelease
+```
