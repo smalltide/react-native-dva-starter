@@ -5,6 +5,7 @@ import { Navigator } from 'react-native';
 
 import Splash from './components/Splash';
 
+import RegisterForm from './routes/RegisterForm';
 import LoginForm from './routes/LoginForm';
 import Hello from './routes/HelloComponent';
 import AsyncHello from './routes/AsyncHelloHelloComponent';
@@ -27,6 +28,7 @@ const RouterComponent = ({ dispatch }) => {
 
       <Scene key="auth">
         <Scene key="login" component={LoginForm} title="Login" />
+        <Scene key="register" component={RegisterForm} title="Register" />
       </Scene>
 
       <Scene key="main">

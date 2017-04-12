@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'dva/mobile';
 import {
   WhiteSpace,
@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   List
 } from 'antd-mobile';
+import { Actions } from 'react-native-router-flux';
 
 function LoginForm({ email, password, error, loading, dispatch }) {
   function onEmailChange(text) {
@@ -32,15 +33,25 @@ function LoginForm({ email, password, error, loading, dispatch }) {
     });
   }
 
+  function onRegister() {
+     Actions.register();
+  }
+
   function renderButton() {
     if (loading) {
       return <ActivityIndicator size="large" />;
     }
 
     return (
-      <Button type="primary" onClick={onLogin}>
-        Login
-      </Button>
+      <View>
+        <Button type="primary" onClick={onLogin}>
+          Login
+        </Button>
+        <WhiteSpace size="xl" />
+        <Button type="warning" onClick={onRegister}>
+          Go To Register
+        </Button>
+      </View>
     );
   }
 
