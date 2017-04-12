@@ -73,7 +73,7 @@ function RegisterForm({ email, password, cpassword, name, address, error, loadin
 
     return (
       <Button type="primary" onClick={onRegister}>
-        Sugn Up
+        Sign Up
       </Button>
     );
   }
